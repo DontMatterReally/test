@@ -1,3 +1,4 @@
+from ctypes import sizeof
 import pickle
 
 from urllib.parse import urlparse 
@@ -53,8 +54,8 @@ class HTTPRQH(http.server.BaseHTTPRequestHandler):
             print(key)
             if key in self.base :
                 value = self.base.get(key)
-                self.wfile.write(bytes("<html><body>"+ value +"</body></html>",'utf-8'))
-                print("Existe la llave y este es el valor " + value)
+                self.wfile.write(bytes("<html><body>"+ value[len(value)-1] +"</body></html>",'utf-8'))
+                print("Existe la llave y este es el último valor " + value[len(value)-1])
             else:
                 self.wfile.write(bytes("<html><body><p>No existe la llave buscada</p></body></html>",'utf-8'))
                 print("No existe")
