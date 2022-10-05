@@ -4,7 +4,7 @@ import pickle
 from urllib.parse import urlparse 
 from urllib.parse import parse_qs
 
-from constants import filename, port
+from constants import filename, port, address
 
 import http.server
 
@@ -93,7 +93,7 @@ def load():
 
 def main():
     Handler = HTTPRQH
-    with http.server.HTTPServer(("", port), Handler) as httpd:
+    with http.server.HTTPServer((address, port), Handler) as httpd:
         print("serving at port", port)
         httpd.serve_forever()
 
