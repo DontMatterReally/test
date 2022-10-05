@@ -1,4 +1,3 @@
-from ctypes import sizeof
 import pickle
 
 from urllib.parse import urlparse 
@@ -14,7 +13,7 @@ import ray
 class HTTPRQH(http.server.BaseHTTPRequestHandler):
     base = {}
 
-    ray.init()
+    ray.init(address='auto')
     
     def _set_headers(self):
         self.send_response(200)
